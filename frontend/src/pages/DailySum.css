@@ -1,0 +1,107 @@
+/* :root {
+    --primary: #00695f;
+    --secondary: #009688;
+    --third: #33ab9f
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+
+}
+
+.contener {
+    background: var(--secondary);
+    width: 50rem;
+    height: 20rem;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(0,0,0, .15);
+}
+
+.content {
+    text-align: center;
+}
+
+.content header {
+    font-size: 4.5rem;
+    color: #eee;
+    font-weight: bold;
+    padding: 30px;
+}
+
+.content span {
+    color: #fff;
+    font-size: 3.5rem;
+} */
+
+
+
+
+ @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;700&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary: #00695f;
+    --secondary: #009688;
+    --third: #33ab9f
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #eee;
+}
+
+.wrapper {
+    top: 50%;
+    left: 50%;
+    width: 31rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0, .15);
+}
+
+.wrapper header {
+    color: var(--primary);
+    font-size: 2.5rem;
+    font-weight: 500;
+    padding: 17px 30px;
+    border-bottom: 1px solid #bfbfbf;
+    text-align: center;
+    /* cursor: move; */
+}
+
+.wrapper header.active {
+    cursor: move;
+    user-select: none;
+}
+
+.wrapper .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 30px 30px 40px;
+}
+
+
+.content span {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.content p::selection {
+    color: #fff;
+    background: var(--secondary);
+}
