@@ -8,7 +8,8 @@ function getAPIData() {
 }
 
 function numberWithCommas(x) {
-    return x.replace(/\B(?=(\d{3})+(?!\d))/g, ' ').slice(0, -2) + ' zł';
+    // return x.replace(/\B(?=(\d{3})+(?!\d))/g, ' ').slice(0, -2) + ' zł';
+    return x.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' zł';
 }
 
 const DailySum = () => {
@@ -32,11 +33,13 @@ const DailySum = () => {
 
     const sums = []
     amount.map((a) => {
-        return sums.push(numberWithCommas(a.daily_sum))
+        // return sums.push(numberWithCommas(a.daily_sum))
+        return sums.push(parseFloat(a.daily_sum))
     })
 
+    let diff = sums[0] - sums[1]
+    diff = diff.toString()
 
-    
     return (
         <main>
             {/* <div className='contener'>
@@ -55,7 +58,7 @@ const DailySum = () => {
                 <header>Today we collected</header>
                 
                 <div className="content">
-                    <span>{ sums[0] }</span>
+                    <span>{ numberWithCommas(diff) }</span>
                 
                     </div>
             </div>

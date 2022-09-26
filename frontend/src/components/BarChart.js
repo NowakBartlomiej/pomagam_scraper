@@ -23,8 +23,9 @@ ChartJS.register(
     Legend
 )
 
-function getAPIData() {
-    return axios.get('http://localhost:3000/daily_sum').then((response) => response.data)
+async function getAPIData() {
+    const response = await axios.get('http://localhost:3000/daily_sum');
+    return response.data;
 }
 
 const ChartDiv = styled.div`
@@ -63,10 +64,10 @@ const BarChart = () => {
 
     useEffect(() => {
         setCharData({
-            labels: dateTab,
+            labels: dateTab.reverse(),
             datasets: [{
                 label: 'Sum of the day',
-                data: amountTab,
+                data: amountTab.reverse(),
                 borderColor: 'rgb(0, 105, 95)',
                 backgroundColor: 'rgba(0, 150, 136, 0.80)'
             },
@@ -92,3 +93,57 @@ const BarChart = () => {
 }
 
 export default BarChart
+
+
+// import axios from "axios";
+// import { useEffect } from "react";
+// import { useState } from "react";
+// import { Form } from "react-router-dom";
+// import styled from "styled-components";
+// import { Chart as ChartJS, ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend} from 'chart.js'
+// import { Line} from "react-chartjs-2"
+
+// // const ChartDiv = styled.div`
+// //     margin: 10rem auto;
+// //     width: 50vw;
+// //     height: 50vh;
+// // `
+
+// ChartJS.register(
+//     ArcElement, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend
+// )
+
+// const BarChart = () => {
+//     const [chartData, setChartData] = useState({})
+
+//     useEffect(() => {
+//         const fetchData = async () => {
+//             const {data} = await axios.get("http://localhost:3000/daily_sum")
+//             setChartData({
+//                 labels: data.data.map((item) => item.id),
+//                 datasets: {
+//                     label: "Sum of the day",
+//                     data: data.data.map(item => item.daily_sum),
+//                     borderColor: 'rgb(0, 105, 95)',
+//                     backgroundColor: 'rgba(0, 150, 136, 0.80)'
+//                 }
+//             })
+//         }
+//         fetchData()
+//     }, [])
+    
+//     return <div>
+//         <Line 
+//             data={chartData}
+//             options={{
+//                 responsive: true,
+//                 plugins: {
+//                     legend: {position: 'top'},
+//                     title: {display: true, text: "Daily Sum"}
+//                 }
+//             }}
+//         />
+//     </div>
+// }
+
+// export default BarChart
